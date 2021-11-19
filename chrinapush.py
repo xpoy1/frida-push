@@ -159,7 +159,7 @@ def push_and_execute(fname, transport_id=None):
     push_cmd = [ADB_PATH, "-t", transport_id, "push", fname, "/data/local/tmp/frida-server"]
     chmod_cmd = [ADB_PATH, "-t", transport_id, "shell", "chmod 0755 /data/local/tmp/frida-server"]
     kill_cmd = [ADB_PATH, "-t", transport_id, "shell", "su killall frida-server"]
-    execute_cmd = [ADB_PATH, "-t", transport_id, "shell", "su '/data/local/tmp/frida-server'"]
+    execute_cmd = [ADB_PATH, "-t", transport_id, "shell", "su -c '/data/local/tmp/frida-server'"]
 
     res = subprocess.Popen(push_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     res.wait()
